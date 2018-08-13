@@ -100,6 +100,15 @@ namespace Test_Cases_Generator
             try
             {
                 p.Start();
+                if ((Parent as FlowLayoutPanel).Name == "problemset_flpUserTest")
+                {
+                    Program.problemset_pId.Add(p.Id);
+                }
+                if ((Parent as FlowLayoutPanel).Name == "contest_flpUserTest")
+                {
+                    Program.contest_pId.Add(p.Id);
+                }
+                Program.all_pId.Add(p.Id);
             }
             catch
             {
@@ -114,12 +123,11 @@ namespace Test_Cases_Generator
                 }
                 return;
             }
-            p.StandardInput.WriteLineAsync(input);
-            //string error = p.StandardError.ReadToEnd().Trim();
+            p.StandardInput.WriteLine(input);
+            p.StandardInput.Close();
             Task<string> readOutput = p.StandardOutput.ReadToEndAsync();
             finished = readOutput.Wait(10000);
             p.StandardOutput.Close();
-            p.StandardInput.Close();
             if (finished)
             {
                 yourOutput = readOutput.Result;
@@ -146,26 +154,31 @@ namespace Test_Cases_Generator
 
         private void bgw_Completed(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (Parent is null)
+            {
+                return;
+            }
             int tc = Convert.ToInt32(lblTcNumber.Text.Split(new[] { " - " }, StringSplitOptions.None)[1]);
             if ((Parent as FlowLayoutPanel).Controls.Count == tc)
             {
                 if ((Parent as FlowLayoutPanel).Name == "problemset_flpSample")
                 {
                     (ParentForm as frmTCParser).problemset_btnRunAllSample.Visible = true;
+                    (ParentForm as frmTCParser).problemset_btnSearch.Enabled = true;
                 }
                 else if ((Parent as FlowLayoutPanel).Name == "problemset_flpUserTest")
                 {
                     (ParentForm as frmTCParser).problemset_btnRunAllUserTest.Visible = true;
-                    (ParentForm as frmTCParser).problemset_btnCleanAll.Visible = true;
                 }
                 else if ((Parent as FlowLayoutPanel).Name == "contest_flpSample")
                 {
                     (ParentForm as frmTCParser).contest_btnRunAllSample.Visible = true;
+                    (ParentForm as frmTCParser).contest_cbxProblems.Enabled = true;
+                    (ParentForm as frmTCParser).contest_btnSearch.Enabled = true;
                 }
                 else
                 {
                     (ParentForm as frmTCParser).contest_btnRunAllUserTest.Visible = true;
-                    (ParentForm as frmTCParser).contest_btnCleanAll.Visible = true;
                 }
             }
             btnRun.Visible = true;

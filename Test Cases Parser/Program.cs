@@ -16,7 +16,9 @@ namespace Test_Cases_Generator
         public static string contest_directory;
         public static string contest_exe;
         public static int type;
-
+        public static List<int> contest_pId = new List<int>();
+        public static List<int> problemset_pId = new List<int>();
+        public static List<int> all_pId = new List<int>();
         [STAThread]
         static void Main()
         {

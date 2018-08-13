@@ -1,7 +1,6 @@
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\bin\Debug\Test Cases Generator.exe.config
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\bin\Debug\Test Cases Generator.exe
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\bin\Debug\Test Cases Generator.pdb
-D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\obj\Debug\Test Cases Parser.csprojAssemblyReference.cache
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\obj\Debug\Test_Cases_Generator.frmTCParser.resources
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\obj\Debug\Test_Cases_Generator.frmLoading.resources
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\obj\Debug\Test_Cases_Generator.Properties.Resources.resources
@@ -10,3 +9,4 @@ D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\obj\Debug\Test Cases Generator.exe
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\obj\Debug\Test Cases Generator.pdb
 D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\obj\Debug\Test_Cases_Generator.TestCaseUI.resources
+D:\Computer Science\Competitive Programming\Test Cases Parser\Test Cases Parser\obj\Debug\Test Cases Parser.csprojAssemblyReference.cache

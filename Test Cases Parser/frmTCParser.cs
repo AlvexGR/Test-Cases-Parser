@@ -17,7 +17,6 @@ namespace Test_Cases_Generator
     {
         private int curLang = 1;
         private List<Problem> contest_problems;
-        private Dictionary<string, List<TestCaseUI>> contest_usertests;
         private Dictionary<string, List<TestCaseUI>> contest_sampletests;
         private Problem problemset_problem;
         private frmLoading loading;
@@ -35,7 +34,6 @@ namespace Test_Cases_Generator
             bgw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(DownloadCompleted);
             bgw.WorkerReportsProgress = true;
             bgw.WorkerSupportsCancellation = true;
-            contest_usertests = new Dictionary<string, List<TestCaseUI>>();
             contest_sampletests = new Dictionary<string, List<TestCaseUI>>();
         }
 
@@ -47,12 +45,14 @@ namespace Test_Cases_Generator
                 lblLanguage.Text = "Language:";
                 Problemset.Text = "Problem Set";
                 Contest.Text = "Contest";
+                btnShutDown.Text = "Shut down";
             }
             else
             {
                 lblLanguage.Text = "Ngôn ngữ:";
                 Problemset.Text = "Danh sách bài";
                 Contest.Text = "Kì thi";
+                btnShutDown.Text = "Tắt hết";
             }
             // Problemset
             if (curLang == 1)
@@ -516,12 +516,10 @@ namespace Test_Cases_Generator
             if ((int)e.Result == 1)
             {
                 contest_btnAddTest.Enabled = true;
-                contest_usertests.Clear();
                 contest_sampletests.Clear();
                 for (int k = 0; k < lst_prob.Count; k++)
                 {
                     contest_sampletests.Add(lst_prob[k], new List<TestCaseUI>());
-                    contest_usertests.Add(lst_prob[k], new List<TestCaseUI>());
                     for (int i = 0; i < contest_problems[k].Testcases.Count; i++)
                     {
                         CreateTestCaseUI(contest_problems[k].Testcases[i], 1, i + 1, lst_prob[k]);
@@ -580,7 +578,7 @@ namespace Test_Cases_Generator
                     tcu.lblTcNumber.Text = tcu.lblTcNumber.Text.Split('-')[0] + "- " + (contest_flpUserTest.Controls.Count + 1).ToString();
                     tcu.tbxInput.ReadOnly = false;
                     tcu.tbxOutput.ReadOnly = false;
-                    contest_usertests[key].Add(tcu);
+                    tcu.IsUserTC = true;
                     contest_flpUserTest.Controls.Add(tcu);
                 }
                 else // sample
@@ -637,25 +635,10 @@ namespace Test_Cases_Generator
         private void contest_cbxProblems_SelectedIndexChanged(object sender, EventArgs e)
         {
             string key = contest_cbxProblems.Text;
-            if (oldKey != null)
-            {
-                contest_usertests[oldKey].Clear();
-                foreach (TestCaseUI item in contest_flpUserTest.Controls)
-                {
-                    contest_usertests[oldKey].Add(item);
-                }
-            }
-            oldKey = key;
-            contest_flpUserTest.Controls.Clear();
             contest_flpSample.Controls.Clear();
             foreach (var item in contest_sampletests[key])
             {
                 contest_flpSample.Controls.Add(item);
-            }
-
-            foreach (var item in contest_usertests[key])
-            {
-                contest_flpUserTest.Controls.Add(item);
             }
         }
 
@@ -678,8 +661,7 @@ namespace Test_Cases_Generator
 
         private void contest_btnAddTest_Click(object sender, EventArgs e)
         {
-            string key = contest_cbxProblems.Text;
-            if (contest_usertests[key].Count == 30)
+            if (contest_flpUserTest.Controls.Count == 30)
             {
                 if (curLang == 1)
                 {
@@ -691,7 +673,7 @@ namespace Test_Cases_Generator
                 }
                 return;
             }
-            CreateTestCaseUI(new TestCase(), tcMain.SelectedIndex, -1, key);
+            CreateTestCaseUI(new TestCase(), tcMain.SelectedIndex, -1, "");
         }
 
         private void contest_tbxWorkingDir_TextChanged(object sender, EventArgs e)
@@ -721,7 +703,7 @@ namespace Test_Cases_Generator
 
         private void contest_btnRunAllSample_Click(object sender, EventArgs e)
         {
-            if (contest_tbxWorkingDir.Text == "" || contest_tbxExe.Text == "")
+            if (!File.Exists(contest_tbxWorkingDir.Text + @"\" + contest_tbxExe.Text + ".exe"))
             {
                 if (curLang == 1)
                 {
@@ -737,7 +719,9 @@ namespace Test_Cases_Generator
             {
                 return;
             }
+            contest_cbxProblems.Enabled = false;
             contest_btnRunAllSample.Visible = false;
+            contest_btnSearch.Enabled = false;
             foreach (TestCaseUI item in contest_flpSample.Controls)
             {
                 item.btnRun.PerformClick();
@@ -746,7 +730,7 @@ namespace Test_Cases_Generator
 
         private void contest_btnRunAllUserTest_Click(object sender, EventArgs e)
         {
-            if (contest_tbxWorkingDir.Text == "" || contest_tbxExe.Text == "")
+            if (!File.Exists(contest_tbxWorkingDir.Text + @"\" + contest_tbxExe.Text + ".exe"))
             {
                 if (curLang == 1)
                 {
@@ -763,7 +747,6 @@ namespace Test_Cases_Generator
                 return;
             }
             contest_btnRunAllUserTest.Visible = false;
-            contest_btnCleanAll.Visible = false;
             foreach (TestCaseUI item in contest_flpUserTest.Controls)
             {
                 item.btnRun.PerformClick();
@@ -772,7 +755,7 @@ namespace Test_Cases_Generator
 
         private void problemset_btnRunAllSample_Click(object sender, EventArgs e)
         {
-            if (problemset_tbxWorkingDir.Text == "" || problemset_tbxWorkingDir.Text == "")
+            if (!File.Exists(problemset_tbxWorkingDir.Text + @"\" + problemset_tbxExe.Text + ".exe"))
             {
                 if (curLang == 1)
                 {
@@ -789,6 +772,7 @@ namespace Test_Cases_Generator
                 return;
             }
             problemset_btnRunAllSample.Visible = false;
+            problemset_btnSearch.Enabled = false;
             foreach (TestCaseUI item in problemset_flpSample.Controls)
             {
                 item.btnRun.PerformClick();
@@ -797,7 +781,7 @@ namespace Test_Cases_Generator
 
         private void problemset_btnRunAllUserTest_Click(object sender, EventArgs e)
         {
-            if (problemset_tbxWorkingDir.Text == "" || problemset_tbxWorkingDir.Text == "")
+            if (!File.Exists(problemset_tbxWorkingDir.Text + @"\" + problemset_tbxExe.Text + ".exe"))
             {
                 if (curLang == 1)
                 {
@@ -814,7 +798,6 @@ namespace Test_Cases_Generator
                 return;
             }
             problemset_btnRunAllUserTest.Visible = false;
-            problemset_btnCleanAll.Visible = false;
             foreach (TestCaseUI item in problemset_flpUserTest.Controls)
             {
                 item.btnRun.PerformClick();
@@ -823,12 +806,80 @@ namespace Test_Cases_Generator
 
         private void contest_btnCleanAll_Click(object sender, EventArgs e)
         {
+            foreach (var item in Program.contest_pId)
+            {
+                try
+                {
+                    Process.GetProcessById(item).Kill();
+                }
+                catch
+                {
+
+                }
+            }
+            Program.contest_pId.Clear();
             contest_flpUserTest.Controls.Clear();
+            contest_btnRunAllUserTest.Visible = true;
         }
 
         private void problemset_btnCleanAll_Click(object sender, EventArgs e)
         {
+            foreach (var item in Program.problemset_pId)
+            {
+                try
+                {
+                    Process.GetProcessById(item).Kill();
+                }
+                catch
+                {
+
+                }
+            }
+            Program.problemset_pId.Clear();
             problemset_flpUserTest.Controls.Clear();
+            problemset_btnRunAllUserTest.Visible = true;
+        }
+
+        private void btnShutDown_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Program.all_pId)
+            {
+                try
+                {
+                    Process.GetProcessById(item).Kill();
+                }
+                catch
+                {
+
+                }
+            }
+            Program.all_pId.Clear();
+            Program.problemset_pId.Clear();
+            Program.contest_pId.Clear();
+            problemset_flpUserTest.Controls.Clear();
+            problemset_btnRunAllUserTest.Visible = true;
+            contest_flpUserTest.Controls.Clear();
+            contest_btnRunAllUserTest.Visible = true;
+            problemset_btnRunAllSample.Visible = true;
+            contest_btnRunAllSample.Visible = true;
+            contest_btnAddTest.Enabled = false;
+            contest_btnSearch.Enabled = true;
+            problemset_btnSearch.Enabled = true;
+        }
+
+        private void frmTCParser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (var item in Program.all_pId)
+            {
+                try
+                {
+                    Process.GetProcessById(item).Kill();
+                }
+                catch
+                {
+
+                }
+            }
         }
     }
 }

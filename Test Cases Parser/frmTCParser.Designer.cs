@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTCParser));
             this.lblLanguage = new System.Windows.Forms.Label();
             this.cbxLanguage = new System.Windows.Forms.ComboBox();
             this.tcMain = new System.Windows.Forms.TabControl();
@@ -67,6 +68,7 @@
             this.contest_gbSample = new System.Windows.Forms.GroupBox();
             this.contest_btnRunAllSample = new System.Windows.Forms.Button();
             this.contest_flpSample = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnShutDown = new System.Windows.Forms.Button();
             this.tcMain.SuspendLayout();
             this.Problemset.SuspendLayout();
             this.problemset_gbUserTest.SuspendLayout();
@@ -82,7 +84,7 @@
             this.lblLanguage.Location = new System.Drawing.Point(12, 9);
             this.lblLanguage.Name = "lblLanguage";
             this.lblLanguage.Size = new System.Drawing.Size(61, 13);
-            this.lblLanguage.TabIndex = 8;
+            this.lblLanguage.TabIndex = 0;
             this.lblLanguage.Text = "Language: ";
             // 
             // cbxLanguage
@@ -94,7 +96,7 @@
             this.cbxLanguage.Location = new System.Drawing.Point(79, 4);
             this.cbxLanguage.Name = "cbxLanguage";
             this.cbxLanguage.Size = new System.Drawing.Size(121, 21);
-            this.cbxLanguage.TabIndex = 7;
+            this.cbxLanguage.TabIndex = 1;
             this.cbxLanguage.Text = "English";
             this.cbxLanguage.SelectedIndexChanged += new System.EventHandler(this.cbxLanguage_SelectedIndexChanged);
             // 
@@ -108,7 +110,7 @@
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
             this.tcMain.Size = new System.Drawing.Size(1025, 597);
-            this.tcMain.TabIndex = 10;
+            this.tcMain.TabIndex = 2;
             this.tcMain.SelectedIndexChanged += new System.EventHandler(this.tcMain_SelectedIndexChanged);
             // 
             // Problemset
@@ -137,7 +139,7 @@
             this.problemset_tbxWorkingDir.Location = new System.Drawing.Point(565, 6);
             this.problemset_tbxWorkingDir.Name = "problemset_tbxWorkingDir";
             this.problemset_tbxWorkingDir.Size = new System.Drawing.Size(446, 20);
-            this.problemset_tbxWorkingDir.TabIndex = 31;
+            this.problemset_tbxWorkingDir.TabIndex = 6;
             this.problemset_tbxWorkingDir.TextChanged += new System.EventHandler(this.problemset_tbxWorkingDir_TextChanged);
             // 
             // problemset_tbxContestId
@@ -145,14 +147,14 @@
             this.problemset_tbxContestId.Location = new System.Drawing.Point(85, 6);
             this.problemset_tbxContestId.Name = "problemset_tbxContestId";
             this.problemset_tbxContestId.Size = new System.Drawing.Size(189, 20);
-            this.problemset_tbxContestId.TabIndex = 21;
+            this.problemset_tbxContestId.TabIndex = 1;
             // 
             // problemset_tbxProblemID
             // 
             this.problemset_tbxProblemID.Location = new System.Drawing.Point(85, 32);
             this.problemset_tbxProblemID.Name = "problemset_tbxProblemID";
             this.problemset_tbxProblemID.Size = new System.Drawing.Size(189, 20);
-            this.problemset_tbxProblemID.TabIndex = 20;
+            this.problemset_tbxProblemID.TabIndex = 3;
             // 
             // problemset_lblWorkingDir
             // 
@@ -160,7 +162,7 @@
             this.problemset_lblWorkingDir.Location = new System.Drawing.Point(451, 9);
             this.problemset_lblWorkingDir.Name = "problemset_lblWorkingDir";
             this.problemset_lblWorkingDir.Size = new System.Drawing.Size(93, 13);
-            this.problemset_lblWorkingDir.TabIndex = 18;
+            this.problemset_lblWorkingDir.TabIndex = 5;
             this.problemset_lblWorkingDir.Text = "Working directory:";
             // 
             // problemset_lblExe
@@ -169,7 +171,7 @@
             this.problemset_lblExe.Location = new System.Drawing.Point(451, 35);
             this.problemset_lblExe.Name = "problemset_lblExe";
             this.problemset_lblExe.Size = new System.Drawing.Size(44, 13);
-            this.problemset_lblExe.TabIndex = 15;
+            this.problemset_lblExe.TabIndex = 7;
             this.problemset_lblExe.Text = "Exe file:";
             // 
             // problemset_tbxExe
@@ -177,7 +179,7 @@
             this.problemset_tbxExe.Location = new System.Drawing.Point(565, 32);
             this.problemset_tbxExe.Name = "problemset_tbxExe";
             this.problemset_tbxExe.Size = new System.Drawing.Size(190, 20);
-            this.problemset_tbxExe.TabIndex = 14;
+            this.problemset_tbxExe.TabIndex = 8;
             this.problemset_tbxExe.TextChanged += new System.EventHandler(this.problemset_tbxExe_TextChanged);
             // 
             // problemset_gbUserTest
@@ -189,7 +191,7 @@
             this.problemset_gbUserTest.Location = new System.Drawing.Point(512, 87);
             this.problemset_gbUserTest.Name = "problemset_gbUserTest";
             this.problemset_gbUserTest.Size = new System.Drawing.Size(500, 478);
-            this.problemset_gbUserTest.TabIndex = 13;
+            this.problemset_gbUserTest.TabIndex = 10;
             this.problemset_gbUserTest.TabStop = false;
             this.problemset_gbUserTest.Text = "Your test cases - Maximum 30 test cases";
             // 
@@ -198,7 +200,7 @@
             this.problemset_btnCleanAll.Location = new System.Drawing.Point(169, 449);
             this.problemset_btnCleanAll.Name = "problemset_btnCleanAll";
             this.problemset_btnCleanAll.Size = new System.Drawing.Size(75, 23);
-            this.problemset_btnCleanAll.TabIndex = 4;
+            this.problemset_btnCleanAll.TabIndex = 3;
             this.problemset_btnCleanAll.Text = "Clean all";
             this.problemset_btnCleanAll.UseVisualStyleBackColor = true;
             this.problemset_btnCleanAll.Click += new System.EventHandler(this.problemset_btnCleanAll_Click);
@@ -208,7 +210,7 @@
             this.problemset_btnRunAllUserTest.Location = new System.Drawing.Point(7, 449);
             this.problemset_btnRunAllUserTest.Name = "problemset_btnRunAllUserTest";
             this.problemset_btnRunAllUserTest.Size = new System.Drawing.Size(75, 23);
-            this.problemset_btnRunAllUserTest.TabIndex = 3;
+            this.problemset_btnRunAllUserTest.TabIndex = 2;
             this.problemset_btnRunAllUserTest.Text = "Run all";
             this.problemset_btnRunAllUserTest.UseVisualStyleBackColor = true;
             this.problemset_btnRunAllUserTest.Click += new System.EventHandler(this.problemset_btnRunAllUserTest_Click);
@@ -218,7 +220,7 @@
             this.problemset_btnAddTest.Location = new System.Drawing.Point(88, 449);
             this.problemset_btnAddTest.Name = "problemset_btnAddTest";
             this.problemset_btnAddTest.Size = new System.Drawing.Size(75, 23);
-            this.problemset_btnAddTest.TabIndex = 2;
+            this.problemset_btnAddTest.TabIndex = 1;
             this.problemset_btnAddTest.Text = "Add test";
             this.problemset_btnAddTest.UseVisualStyleBackColor = true;
             this.problemset_btnAddTest.Click += new System.EventHandler(this.problemset_btnAddTest_Click);
@@ -229,7 +231,7 @@
             this.problemset_flpUserTest.Location = new System.Drawing.Point(7, 20);
             this.problemset_flpUserTest.Name = "problemset_flpUserTest";
             this.problemset_flpUserTest.Size = new System.Drawing.Size(487, 423);
-            this.problemset_flpUserTest.TabIndex = 1;
+            this.problemset_flpUserTest.TabIndex = 0;
             // 
             // problemset_gbSample
             // 
@@ -238,7 +240,7 @@
             this.problemset_gbSample.Location = new System.Drawing.Point(6, 87);
             this.problemset_gbSample.Name = "problemset_gbSample";
             this.problemset_gbSample.Size = new System.Drawing.Size(500, 478);
-            this.problemset_gbSample.TabIndex = 12;
+            this.problemset_gbSample.TabIndex = 9;
             this.problemset_gbSample.TabStop = false;
             this.problemset_gbSample.Text = "Sample test cases";
             // 
@@ -265,7 +267,7 @@
             this.problemset_btnSearch.Location = new System.Drawing.Point(85, 58);
             this.problemset_btnSearch.Name = "problemset_btnSearch";
             this.problemset_btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.problemset_btnSearch.TabIndex = 11;
+            this.problemset_btnSearch.TabIndex = 4;
             this.problemset_btnSearch.Text = "Search";
             this.problemset_btnSearch.UseVisualStyleBackColor = true;
             this.problemset_btnSearch.Click += new System.EventHandler(this.problemset_btnSearch_Click);
@@ -276,7 +278,7 @@
             this.problemset_lblProblemId.Location = new System.Drawing.Point(6, 35);
             this.problemset_lblProblemId.Name = "problemset_lblProblemId";
             this.problemset_lblProblemId.Size = new System.Drawing.Size(62, 13);
-            this.problemset_lblProblemId.TabIndex = 3;
+            this.problemset_lblProblemId.TabIndex = 2;
             this.problemset_lblProblemId.Text = "Problem ID:";
             // 
             // problemset_lblContestId
@@ -285,7 +287,7 @@
             this.problemset_lblContestId.Location = new System.Drawing.Point(6, 9);
             this.problemset_lblContestId.Name = "problemset_lblContestId";
             this.problemset_lblContestId.Size = new System.Drawing.Size(60, 13);
-            this.problemset_lblContestId.TabIndex = 1;
+            this.problemset_lblContestId.TabIndex = 0;
             this.problemset_lblContestId.Text = "Contest ID:";
             // 
             // Contest
@@ -315,7 +317,7 @@
             this.contest_lblProblems.Location = new System.Drawing.Point(6, 35);
             this.contest_lblProblems.Name = "contest_lblProblems";
             this.contest_lblProblems.Size = new System.Drawing.Size(53, 13);
-            this.contest_lblProblems.TabIndex = 33;
+            this.contest_lblProblems.TabIndex = 2;
             this.contest_lblProblems.Text = "Problems:";
             // 
             // contest_cbxProblems
@@ -325,7 +327,7 @@
             this.contest_cbxProblems.Location = new System.Drawing.Point(85, 32);
             this.contest_cbxProblems.Name = "contest_cbxProblems";
             this.contest_cbxProblems.Size = new System.Drawing.Size(189, 21);
-            this.contest_cbxProblems.TabIndex = 11;
+            this.contest_cbxProblems.TabIndex = 3;
             this.contest_cbxProblems.SelectedIndexChanged += new System.EventHandler(this.contest_cbxProblems_SelectedIndexChanged);
             // 
             // contest_lblWorkingDir
@@ -334,7 +336,7 @@
             this.contest_lblWorkingDir.Location = new System.Drawing.Point(451, 9);
             this.contest_lblWorkingDir.Name = "contest_lblWorkingDir";
             this.contest_lblWorkingDir.Size = new System.Drawing.Size(93, 13);
-            this.contest_lblWorkingDir.TabIndex = 31;
+            this.contest_lblWorkingDir.TabIndex = 5;
             this.contest_lblWorkingDir.Text = "Working directory:";
             // 
             // contest_tbxWorkingDir
@@ -342,7 +344,7 @@
             this.contest_tbxWorkingDir.Location = new System.Drawing.Point(565, 6);
             this.contest_tbxWorkingDir.Name = "contest_tbxWorkingDir";
             this.contest_tbxWorkingDir.Size = new System.Drawing.Size(446, 20);
-            this.contest_tbxWorkingDir.TabIndex = 30;
+            this.contest_tbxWorkingDir.TabIndex = 6;
             this.contest_tbxWorkingDir.TextChanged += new System.EventHandler(this.contest_tbxWorkingDir_TextChanged);
             // 
             // contest_lblExe
@@ -351,7 +353,7 @@
             this.contest_lblExe.Location = new System.Drawing.Point(451, 35);
             this.contest_lblExe.Name = "contest_lblExe";
             this.contest_lblExe.Size = new System.Drawing.Size(44, 13);
-            this.contest_lblExe.TabIndex = 28;
+            this.contest_lblExe.TabIndex = 7;
             this.contest_lblExe.Text = "Exe file:";
             // 
             // contest_tbxExe
@@ -359,7 +361,7 @@
             this.contest_tbxExe.Location = new System.Drawing.Point(565, 32);
             this.contest_tbxExe.Name = "contest_tbxExe";
             this.contest_tbxExe.Size = new System.Drawing.Size(190, 20);
-            this.contest_tbxExe.TabIndex = 27;
+            this.contest_tbxExe.TabIndex = 8;
             this.contest_tbxExe.TextChanged += new System.EventHandler(this.contest_tbxExe_TextChanged);
             // 
             // contest_tbxContestId
@@ -367,14 +369,14 @@
             this.contest_tbxContestId.Location = new System.Drawing.Point(85, 6);
             this.contest_tbxContestId.Name = "contest_tbxContestId";
             this.contest_tbxContestId.Size = new System.Drawing.Size(189, 20);
-            this.contest_tbxContestId.TabIndex = 26;
+            this.contest_tbxContestId.TabIndex = 1;
             // 
             // contest_btnSearch
             // 
             this.contest_btnSearch.Location = new System.Drawing.Point(85, 58);
             this.contest_btnSearch.Name = "contest_btnSearch";
             this.contest_btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.contest_btnSearch.TabIndex = 24;
+            this.contest_btnSearch.TabIndex = 4;
             this.contest_btnSearch.Text = "Search";
             this.contest_btnSearch.UseVisualStyleBackColor = true;
             this.contest_btnSearch.Click += new System.EventHandler(this.contest_btnSearch_Click);
@@ -385,7 +387,7 @@
             this.contest_lblContestId.Location = new System.Drawing.Point(6, 9);
             this.contest_lblContestId.Name = "contest_lblContestId";
             this.contest_lblContestId.Size = new System.Drawing.Size(57, 13);
-            this.contest_lblContestId.TabIndex = 22;
+            this.contest_lblContestId.TabIndex = 0;
             this.contest_lblContestId.Text = "Contest ID";
             // 
             // contest_gbUserTest
@@ -397,7 +399,7 @@
             this.contest_gbUserTest.Location = new System.Drawing.Point(512, 87);
             this.contest_gbUserTest.Name = "contest_gbUserTest";
             this.contest_gbUserTest.Size = new System.Drawing.Size(500, 478);
-            this.contest_gbUserTest.TabIndex = 15;
+            this.contest_gbUserTest.TabIndex = 10;
             this.contest_gbUserTest.TabStop = false;
             this.contest_gbUserTest.Text = "Your test cases - Maximum 30 test cases";
             // 
@@ -406,7 +408,7 @@
             this.contest_btnCleanAll.Location = new System.Drawing.Point(169, 449);
             this.contest_btnCleanAll.Name = "contest_btnCleanAll";
             this.contest_btnCleanAll.Size = new System.Drawing.Size(75, 23);
-            this.contest_btnCleanAll.TabIndex = 11;
+            this.contest_btnCleanAll.TabIndex = 3;
             this.contest_btnCleanAll.Text = "Clean all";
             this.contest_btnCleanAll.UseVisualStyleBackColor = true;
             this.contest_btnCleanAll.Click += new System.EventHandler(this.contest_btnCleanAll_Click);
@@ -416,7 +418,7 @@
             this.contest_btnRunAllUserTest.Location = new System.Drawing.Point(7, 449);
             this.contest_btnRunAllUserTest.Name = "contest_btnRunAllUserTest";
             this.contest_btnRunAllUserTest.Size = new System.Drawing.Size(75, 23);
-            this.contest_btnRunAllUserTest.TabIndex = 3;
+            this.contest_btnRunAllUserTest.TabIndex = 2;
             this.contest_btnRunAllUserTest.Text = "Run all";
             this.contest_btnRunAllUserTest.UseVisualStyleBackColor = true;
             this.contest_btnRunAllUserTest.Click += new System.EventHandler(this.contest_btnRunAllUserTest_Click);
@@ -427,7 +429,7 @@
             this.contest_btnAddTest.Location = new System.Drawing.Point(88, 449);
             this.contest_btnAddTest.Name = "contest_btnAddTest";
             this.contest_btnAddTest.Size = new System.Drawing.Size(75, 23);
-            this.contest_btnAddTest.TabIndex = 2;
+            this.contest_btnAddTest.TabIndex = 1;
             this.contest_btnAddTest.Text = "Add test";
             this.contest_btnAddTest.UseVisualStyleBackColor = true;
             this.contest_btnAddTest.Click += new System.EventHandler(this.contest_btnAddTest_Click);
@@ -438,7 +440,7 @@
             this.contest_flpUserTest.Location = new System.Drawing.Point(7, 20);
             this.contest_flpUserTest.Name = "contest_flpUserTest";
             this.contest_flpUserTest.Size = new System.Drawing.Size(487, 423);
-            this.contest_flpUserTest.TabIndex = 1;
+            this.contest_flpUserTest.TabIndex = 0;
             // 
             // contest_gbSample
             // 
@@ -447,7 +449,7 @@
             this.contest_gbSample.Location = new System.Drawing.Point(6, 87);
             this.contest_gbSample.Name = "contest_gbSample";
             this.contest_gbSample.Size = new System.Drawing.Size(500, 478);
-            this.contest_gbSample.TabIndex = 14;
+            this.contest_gbSample.TabIndex = 9;
             this.contest_gbSample.TabStop = false;
             this.contest_gbSample.Text = "Sample test cases";
             // 
@@ -469,19 +471,32 @@
             this.contest_flpSample.Size = new System.Drawing.Size(487, 423);
             this.contest_flpSample.TabIndex = 0;
             // 
+            // btnShutDown
+            // 
+            this.btnShutDown.Location = new System.Drawing.Point(227, 4);
+            this.btnShutDown.Name = "btnShutDown";
+            this.btnShutDown.Size = new System.Drawing.Size(75, 23);
+            this.btnShutDown.TabIndex = 32;
+            this.btnShutDown.Text = "Shut down";
+            this.btnShutDown.UseVisualStyleBackColor = true;
+            this.btnShutDown.Click += new System.EventHandler(this.btnShutDown_Click);
+            // 
             // frmTCParser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1046, 640);
+            this.Controls.Add(this.btnShutDown);
             this.Controls.Add(this.tcMain);
             this.Controls.Add(this.lblLanguage);
             this.Controls.Add(this.cbxLanguage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmTCParser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Test Cases Parser - by Nhan K10";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTCParser_FormClosing);
             this.tcMain.ResumeLayout(false);
             this.Problemset.ResumeLayout(false);
             this.Problemset.PerformLayout();
@@ -503,7 +518,6 @@
         private System.Windows.Forms.Label problemset_lblContestId;
         private System.Windows.Forms.TabPage Contest;
         private System.Windows.Forms.Label problemset_lblProblemId;
-        private System.Windows.Forms.Button problemset_btnSearch;
         private System.Windows.Forms.GroupBox problemset_gbSample;
         private System.Windows.Forms.GroupBox problemset_gbUserTest;
         private System.Windows.Forms.Label problemset_lblExe;
@@ -520,13 +534,11 @@
         private System.Windows.Forms.GroupBox contest_gbSample;
         private System.Windows.Forms.FlowLayoutPanel contest_flpSample;
         private System.Windows.Forms.TextBox contest_tbxContestId;
-        private System.Windows.Forms.Button contest_btnSearch;
         private System.Windows.Forms.Label contest_lblContestId;
         private System.Windows.Forms.Label contest_lblWorkingDir;
         private System.Windows.Forms.TextBox contest_tbxWorkingDir;
         private System.Windows.Forms.Label contest_lblExe;
         private System.Windows.Forms.TextBox contest_tbxExe;
-        private System.Windows.Forms.ComboBox contest_cbxProblems;
         private System.Windows.Forms.Label contest_lblProblems;
         private System.Windows.Forms.TextBox problemset_tbxWorkingDir;
         public System.Windows.Forms.TabControl tcMain;
@@ -536,6 +548,10 @@
         public System.Windows.Forms.Button contest_btnRunAllUserTest;
         public System.Windows.Forms.Button problemset_btnCleanAll;
         public System.Windows.Forms.Button contest_btnCleanAll;
+        public System.Windows.Forms.ComboBox contest_cbxProblems;
+        public System.Windows.Forms.Button contest_btnSearch;
+        public System.Windows.Forms.Button problemset_btnSearch;
+        public System.Windows.Forms.Button btnShutDown;
     }
 }
 
